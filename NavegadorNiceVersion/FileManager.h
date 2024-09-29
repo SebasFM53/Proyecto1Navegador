@@ -4,6 +4,7 @@
 #include "SitioWeb.h"
 #include <list>
 #include "Navegador.h"
+#include "ExcepcionNoExiste.h"
 class FileManager
 {
 private:

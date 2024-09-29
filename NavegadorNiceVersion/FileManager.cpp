@@ -44,16 +44,17 @@ std::list<SitioWeb*> FileManager::cargarSitios(const std::string& filename) {
 }
 
 SitioWeb* FileManager::checkURL(std::string url) {
-    for (auto sitioWeb : sitios) {
-        if (sitioWeb->getURL() == url) {
-            //std::cout << "URL found: " << sitioWeb->getURL() << std::endl;
-            //std::cout << "Title: " << sitioWeb->getTitulo() << std::endl;
-            return sitioWeb;
+    try {
+        for (auto sitioWeb : sitios) {
+            if (sitioWeb->getURL() == url) {
+                return sitioWeb;
+            }
         }
-        else {
-            std::cout << "404 - Not Found" << std::endl;
-            return nullptr;
-        }
+         throw ExcepcionNoExiste("404 - Not Found");
+    }
+    catch (const ExcepcionNoExiste& exc) {
+        std::cerr << exc.what() << std::endl;
+        return nullptr;
     }
 }
 

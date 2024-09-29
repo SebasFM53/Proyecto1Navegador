@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
-
+#include "ExcepcionNoExiste.h"
 class SitioWeb {
 private:
 	std::string dominio;
