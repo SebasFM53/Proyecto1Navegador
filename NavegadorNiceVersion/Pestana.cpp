@@ -49,6 +49,7 @@ void Pestana::setNumPestana(int num) {
 void Pestana::setIncognito(bool incg) {
 
     incognito = incg;
+
 }
 
 std::string Pestana::mostrarSitioActual() {
@@ -57,27 +58,22 @@ std::string Pestana::mostrarSitioActual() {
         s << "No se han ingresado Sitios\n";
     }
     else {
-        std::cout << "PESTANA " << getNumPestana() << std::endl;
         s << (*iterador)->toString() << "\n";
     }
     return s.str();
 }
 
 void Pestana::insertarSitio(SitioWeb* sitio) {
-    /*if (incognito == false) {
-        historial.push_front(sitio);
-        iterador = historial.begin();
-    }
-    else {
-        eliminarMasReciente();
-        historial.push_front(sitio);
-        iterador = historial.begin();
-    }*/
+ 
 
-    if (incognito && !historial.empty()) {
-        // Si estamos en modo incognito y ya hay sitios en el historial, eliminamos el más reciente
-        delete* historial.begin();
-        historial.erase(historial.begin());
+    if (incognito==true ) {
+        if (!historial.empty()){
+            // Si estamos en modo incognito y ya hay sitios en el historial, eliminamos el más reciente
+            if (getSitioActualPestActual()->getAgregadoEnIncognito() == true) {
+                eliminarMasReciente();
+            }
+        }
+        sitio->setAgregadoEnIncognito(true);
     }
 
     // Insertamos el nuevo sitio
@@ -86,40 +82,7 @@ void Pestana::insertarSitio(SitioWeb* sitio) {
 
 }
 
-/*void Pestana::adelantarHistorial() {
 
-    if (incognito==true){
-        std::cout << "Pestanha incognita, no hay historial por mostrar\n";
-    }
-    else {
-        if (!historial.empty()) {
-            if (iterador == historial.begin()) {
-                std::cout << "Este es el sitios mas recientemente registrado en el historial\n";
-            }
-            else {
-                iterador--;
-                std::cout << mostrarSitioActual();
-            }
-        }
-    }
-}
-
-void Pestana::regresarHistorial(){
-    if (incognito==true){
-        std::cout << "Pestanha incognita, no hay historial por mostral\n";
-    }
-    else {
-        if (!historial.empty()) {
-            if (iterador == historial.end()) {
-                std::cout << "No existen mas sitios registrados en el historial\n";
-            }
-            else {
-                iterador++;
-                std::cout << mostrarSitioActual();
-            }
-        }
-    }
-}*/
 
 
 void Pestana::regresarHistorial() {
@@ -163,19 +126,20 @@ void Pestana::eliminarMasReciente() {
         SitioWeb* sitioAEliminar = *historial.begin();
         delete sitioAEliminar;  // Eliminamos el objeto que el iterador apunta
 
-        // Eliminamos el iterador del historial
+        // Eliminamos el primer elemento del historial
         historial.erase(historial.begin());
 
-
-        // Actualizamos el iterador si la lista no está vacía
+        // Si la lista no está vacía, actualizamos el iterador
         if (!historial.empty()) {
             iterador = historial.begin();
         }
         else {
+            // Si el historial está vacío, ponemos el iterador en `end()`, indicando que no apunta a ningún elemento
             iterador = historial.end();
         }
     }
 }
+
 
 int Pestana::conteoSitios()
 {
@@ -198,8 +162,13 @@ void Pestana::primerElemento() {
 }
 
 void Pestana::mostrarTodoHistorial() {
-    for (std::list<SitioWeb*>::iterator it = historial.begin(); it != historial.end(); ++it) {
-        std::cout<<(*it)->toString();
+    if (incognito==true){
+        std::cout << "Pestanha incognita, no hay historial por mostrar\n";
+    }
+    else {
+        for (std::list<SitioWeb*>::iterator it = historial.begin(); it != historial.end(); ++it) {
+            std::cout << (*it)->toString();
+        }
     }
 }
 
@@ -229,6 +198,24 @@ void Pestana::cargarArchivo(const std::string& filename) {
         historial.push_back(sitio);
     }
 }
+
+void Pestana::cambiaAIncognito(){
+    setIncognito(true);
+}
+
+void Pestana::cambiarANormal() {
+    if (incognito && !historial.empty()) {
+        // Verificamos nuevamente que la lista no esté vacía antes de proceder
+        SitioWeb* sitioActual = historial.front(); // Obtener el primer sitio web
+        if (sitioActual != nullptr && sitioActual->getAgregadoEnIncognito() == true) {
+            delete sitioActual; // Liberar la memoria del sitio
+            historial.pop_front(); // Eliminar el primer sitio del historial
+        }
+    }
+    incognito = false; // Cambiar al modo normal
+}
+
+
 
 SitioWeb* Pestana::getSitioActualPestActual(){
     if (historial.empty() == false) {

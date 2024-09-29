@@ -8,6 +8,7 @@ BookMarkList::BookMarkList(std::vector<BookMark*> favs) {
 	marcadores = favs;
 }
 
+
 bool BookMarkList::addBookMark(BookMark* fav) {
 	if (fav->getSitio() == nullptr) {
 		return false;

@@ -26,12 +26,15 @@ Pestana* Navegador::getPestana() {
 
 std::string Navegador::mostrarPestana() {
     std::stringstream s;
+    s << "==========================================\n\n";
     if (pestanas.empty()) {
-        s << "     No se han ingresado busquedas\n";
+        s << "     No se han creado pestanas\n\n";
     }
     else {
-        s << "     "<<(*iterador)->mostrarSitioActual() << "\n";
+        s << "Pestana: " << getPestana()->getNumPestana() << "\n\n";
+        s << " " << (*iterador)->mostrarSitioActual() << "\n\n";
     }
+    s << "==========================================\n\n";
     return s.str();
 }
 

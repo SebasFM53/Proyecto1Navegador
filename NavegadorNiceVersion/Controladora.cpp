@@ -13,11 +13,11 @@ void Controladora::menuPrincipal()
 	int opc;
 
 	do {
-		cout << "==========================================================\n";
-		cout << "\n";
+		//cout << "==========================================================\n";
+		//cout << "\n";
 		cout << navegadorWeb->mostrarPestana();
-		cout << "\n";
-		cout << "==========================================================\n";
+		//cout << "\n";
+		//cout << "==========================================================\n";
 		cout << "\n";
 		opc = Vista::menuPrincipal();
 		/*if (GetAsyncKeyState(VK_UP) & 0x8000) {
@@ -52,51 +52,76 @@ void Controladora::menuPrincipal()
 			else
 				Vista::noPestanasExistentes();
 			system("pause");
-			//system("pause");
-			//system("cls");
+			system("cls");
 			break;
 		case 3:
 			if (navegadorWeb->empty()== false) {
 				if (navegadorWeb->getPestana()->conteoSitios()<1){
 					Vista::noHistorial();
 					system("pause");
+					system("cls");
 				}
 				else {
 					mostarHistorialPestActual();
 					system("pause");
+					system("cls");
 				}
 			}
 			else
 				Vista::noPestanasExistentes();
 			system("pause");
-			//system("pause");
-			//system("cls");
+			system("cls");
 			break;
 		case 4:
-			marcadores();
-			//system("pause");
-			//system("cls");
+			if (navegadorWeb->empty() == false) {
+				if (navegadorWeb->getPestana()->conteoSitios() < 1) {
+					Vista::noHistorial();
+					system("pause");
+					system("cls");
+				}
+				else {
+					marcadores();
+					system("pause");
+					system("cls");
+				}
+			}
+			else
+				Vista::noPestanasExistentes();
+			system("pause");
+			system("cls");
 			break;
 		case 5:
-			importar();
+			if (navegadorWeb->empty()){
+				Vista::noPestanasExistentes();
+				system("pause");
+				system("cls");
+			}
+			else
+				cambioModalidadPestana();
 			//system("pause");
 			//system("cls");
 			break;
 		case 6:
-			exportar();
+			importar();
 			//system("pause");
 			//system("cls");
 			break;
 		case 7:
-			configuracion();
+			exportar();
 			//system("pause");
 			//system("cls");
 			break;
 		case 8:
+			configuracion();
+			//system("pause");
+			//system("cls");
+			break;
+		case 9:
 			exit(0);
 			//system("pause");
 			//system("cls");
 			break;
+
 
 		
 		}
@@ -109,12 +134,12 @@ void Controladora::menuPrincipal()
 void Controladora::agregarPestanha(){
 	int opc;
 	do {
-		cout << "==========================================================\n";
-		cout << "\n";
+		//cout << "==========================================================\n";
+		//cout << "\n";
 		cout << navegadorWeb->mostrarPestana();
-		cout << "\n";
-		cout << "==========================================================\n";
-		cout << "\n";
+		//cout << "\n";
+		//cout << "==========================================================\n";
+		//cout << "\n";
 		Pestana* pes = new Pestana();
 		pes->setNumPestana(navegadorWeb->getPestanas().size()+1);
 		opc = Vista::subMenuAgregarPestana();
@@ -124,6 +149,7 @@ void Controladora::agregarPestanha(){
 				navegadorWeb->agregarPestana(pes);
 				break;
 			case 2:
+				pes->setIncognito(true);
 				navegadorWeb->agregarPestana(pes);
 				break;
 			}
@@ -137,11 +163,11 @@ void Controladora::agregarSitioWeb() {
 	bool existSite = false;
 	std::string URL;
 	do {
-		cout << "==========================================================\n";
-		cout << "\n";
+		//cout << "==========================================================\n";
+		//cout << "\n";
 		cout << navegadorWeb->mostrarPestana();
-		cout << "\n";
-		cout << "==========================================================\n";
+		//cout << "\n";
+		//cout << "==========================================================\n";
 		cout << "\n";
 		URL = Vista::subMenuAgregarSitio();
 		SitioWeb* site = fileMan->checkURL(URL);
@@ -277,5 +303,35 @@ void Controladora::limpiarEntradasViejas()
 {
 	double limiteTiempo = Vista::opc2Politicas();
 
+}
+
+void Controladora::cambioModalidadPestana() {
+	int opc = 0;
+	do {
+		if (navegadorWeb->getPestana()->getIncognito() == false) {
+			int opc = Vista::cambioTipoPestanaAIncognito();
+			switch (opc) {
+			case 1:
+				navegadorWeb->getPestana()->setIncognito(true);
+				system("pause");
+				system("cls");
+				break;
+			case 2:
+				break;
+			}
+		}
+		else {
+			int opc = Vista::cambioTipoPestanaANormal();
+			switch (opc) {
+			case 1:
+				navegadorWeb->getPestana()->cambiarANormal();
+				system("pause");
+				system("cls");
+				break;
+			case 2:
+				break;
+			}
+		}
+	} while (opc > 2);
 }
 

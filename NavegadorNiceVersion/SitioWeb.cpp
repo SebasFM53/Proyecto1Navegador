@@ -4,6 +4,7 @@ SitioWeb::SitioWeb(std::string d, std::string u, std::string t) {
     dominio = d;
     URL = u;
     titulo = t;
+    agregadoIncognito = false;
 }
 
 SitioWeb::SitioWeb() {
@@ -42,6 +43,15 @@ std::string SitioWeb::toString() {
     //s << dominio << std::endl;
     s << "Nombre: " << titulo << std::endl;
     return s.str();
+}
+
+void SitioWeb::setAgregadoEnIncognito(bool x){
+    agregadoIncognito = x;
+}
+
+bool SitioWeb::getAgregadoEnIncognito()
+{
+    return agregadoIncognito;
 }
 
 SitioWeb::~SitioWeb() { }

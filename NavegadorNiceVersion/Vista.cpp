@@ -8,10 +8,11 @@ int Vista::menuPrincipal()
     std::cout << "2. Ingresar Sitio\n";
     std::cout << "3. Historial de la Pestana\n";
     std::cout << "4. Agregar Sitio Actual a BookMarks\n";
-    std::cout << "5. Importar Historial\n";
-    std::cout << "6. Exportar Historial\n";
-    std::cout << "7. Configuracion de Politicas\n";
-    std::cout << "8. Exit\n";
+    std::cout << "5. Cambiar Modo de Pestanha \n";
+    std::cout << "6. Importar Historial\n";
+    std::cout << "7. Exportar Historial\n";
+    std::cout << "8. Configuracion de Politicas\n";
+    std::cout << "9. Exit\n";
     std::cin >> opc;
     
     system("cls");
@@ -149,8 +150,36 @@ void Vista::noHistorial(){
     std::cout << "Esta pestanha no tiene sitios en el historial\n";
 }
 
+
+
 void Vista::tagNoExiste(){
     std::cout << "No hay BookMarks con el tag ingresado\n";
     std::cout << "Presione 1 para salir\n";
+}
+
+void Vista::mensajeMostrarHistorial(){
+    std::cout << " Historial registrado de la pestanha actual:\n\n";
+}
+
+int Vista::cambioTipoPestanaAIncognito(){
+    int opc;
+    std::cout << "/////Cambio Tipo Pestana /////\n";
+    std::cout << "1. Cambiar Pestana a Incongnito \n";
+    std::cout << "2. Salir\n";
+    std::cin >> opc;
+    system("pause");
+    system("cls");
+    return opc;
+}
+
+int Vista::cambioTipoPestanaANormal(){
+    int opc;
+    std::cout << "/////Cambio Tipo Pestana /////\n";
+    std::cout << "1. Salir del modo  Incongnito \n";
+    std::cout << "2. Salir\n";
+    std::cin >> opc;
+    system("pause");
+    system("cls");
+    return opc;
 }
 

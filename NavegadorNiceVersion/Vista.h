@@ -21,6 +21,18 @@ public:
 	static void noPestanasExistentes();
 	static void noHistorial();
 
+	static void historialIncognito();
+
+
 	static void tagNoExiste();
+
+	static void mensajeMostrarHistorial();
+
+	static int cambioTipoPestanaAIncognito();
+
+	static int cambioTipoPestanaANormal();
+
+
+
 };
 

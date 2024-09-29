@@ -8,6 +8,7 @@ private:
 	std::string dominio;
 	std::string URL;
 	std::string titulo;
+	bool agregadoIncognito;
 public:
 
 	//Constructores
@@ -26,6 +27,8 @@ public:
 
 	//Otros metodos
 	std::string toString();
+	void setAgregadoEnIncognito(bool);
+	bool getAgregadoEnIncognito();
 
 	// Destructor
 

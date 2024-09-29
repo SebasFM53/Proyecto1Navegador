@@ -12,6 +12,7 @@ public:
 	BookMarkList();
 	BookMarkList(std::vector<BookMark*>);
 
+
 	bool addBookMark(BookMark*);
 
 	BookMark* getBookMark(std::string);

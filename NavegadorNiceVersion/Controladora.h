@@ -38,5 +38,7 @@ public:
 	void limitarEntradas();
 	void limpiarEntradasViejas();
 
+	void cambioModalidadPestana();
+
 };
 

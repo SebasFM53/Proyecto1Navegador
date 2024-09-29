@@ -49,6 +49,9 @@ public:
 	void cargarArchivo(const std::string& filename);
 
 
+	void cambiaAIncognito();
+	void cambiarANormal();
+
 	SitioWeb* getSitioActualPestActual();
 
 
