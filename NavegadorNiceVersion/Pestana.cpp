@@ -95,7 +95,7 @@ void Pestana::regresarHistorial() {
         }
         else {
             iterador++;
-            std::cout << mostrarSitioActual();
+           // std::cout << mostrarSitioActual();
         }
     }
 }
@@ -110,7 +110,7 @@ void Pestana::adelantarHistorial() {
         }
         else {
             iterador--;
-            std::cout << mostrarSitioActual();
+           // std::cout << mostrarSitioActual();
         }
     }
 }

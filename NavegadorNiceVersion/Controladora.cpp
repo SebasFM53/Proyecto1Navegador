@@ -20,26 +20,6 @@ void Controladora::menuPrincipal()
 		//cout << "==========================================================\n";
 		cout << "\n";
 		opc = Vista::menuPrincipal();
-		/*if (GetAsyncKeyState(VK_UP) & 0x8000) {
-			navegadorWeb->siguientePestana();
-
-		}
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-			navegadorWeb->pestanaAnterior();
-
-		}
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-			navegadorWeb->getPestana()->regresarHistorial();
-
-		}
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-			navegadorWeb->getPestana()->adelantarHistorial();
-
-		}
-
-		if (GetAsyncKeyState(VK_ESCAPE) & 0x8000) {
-			break;
-		}*/
 		switch (opc) {
 		case 1:
 			agregarPestanha();
@@ -117,17 +97,19 @@ void Controladora::menuPrincipal()
 			//system("cls");
 			break;
 		case 9:
-			exit(0);
-			//system("pause");
-			//system("cls");
+			flechas();
+			system("pause");
+			system("cls");
 			break;
-
+		case 10:
+			exit(0);
+			break;
 
 		
 		}
 
 
-	} while (opc != 9);
+	} while (opc != 10);
 
 }
 
@@ -302,6 +284,54 @@ void Controladora::limitarEntradas()
 void Controladora::limpiarEntradasViejas()
 {
 	double limiteTiempo = Vista::opc2Politicas();
+
+}
+
+void Controladora::flechas()
+{
+	int flag = 1;
+	
+	do {
+		cout << endl << "NAVEGADOR - FLECHAS" << endl;
+		cout << "Permite seleccionar: Pestaña / SitioWeb" << endl;
+		cout << endl;
+		cout << "Opciones" << endl;
+		cout << "Presione: FlechaDer (Avanzar) | FlechaIzq (Retroceder) | FlechaInf (Retroceder Pestana) | FechaSup (AvanzarPestana)" << endl;
+		cout << "Presione ESC para regresar al menu principal" << endl;
+		cout << endl;
+		
+		while (true) {
+
+			if (GetAsyncKeyState(VK_UP) & 0x8000) {
+				navegadorWeb->siguientePestana();
+				cout << navegadorWeb->mostrarPestana() << endl;
+				
+			}
+			if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+				navegadorWeb->pestanaAnterior();
+				cout << navegadorWeb->mostrarPestana() << endl;
+				
+			}
+			if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
+				navegadorWeb->getPestana()->regresarHistorial();
+				cout << navegadorWeb->mostrarPestana() << endl;
+				
+			}
+			if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
+				navegadorWeb->getPestana()->adelantarHistorial();
+				cout << navegadorWeb->mostrarPestana() << endl;
+				
+			}
+
+			if (GetAsyncKeyState(VK_ESCAPE) & 0x8000) {
+				flag = 0;
+				break;
+			}
+
+			Sleep(100);
+		}
+
+	} while (flag != 0);
 
 }
 

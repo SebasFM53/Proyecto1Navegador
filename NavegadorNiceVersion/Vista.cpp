@@ -12,7 +12,8 @@ int Vista::menuPrincipal()
     std::cout << "6. Importar Historial\n";
     std::cout << "7. Exportar Historial\n";
     std::cout << "8. Configuracion de Politicas\n";
-    std::cout << "9. Exit\n";
+    std::cout << "9. Navegar Usando Flechas\n";
+    std::cout << "10. Exit\n";
     std::cin >> opc;
     
     system("cls");

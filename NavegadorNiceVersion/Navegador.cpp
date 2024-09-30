@@ -64,7 +64,7 @@ bool Navegador::siguientePestana() {
     }
 
     --iterador;
-    std::cout << mostrarPestana() << std::endl;
+   // std::cout << mostrarPestana() << std::endl;
     return true;
 }
 
@@ -92,7 +92,7 @@ bool Navegador::pestanaAnterior() {
         iterador = pestanas.begin();
     }
 
-    std::cout << mostrarPestana() << std::endl;
+   // std::cout << mostrarPestana() << std::endl;
     return true;
 }
 

@@ -37,7 +37,7 @@ public:
 	void configuracion();
 	void limitarEntradas();
 	void limpiarEntradasViejas();
-
+	void flechas();
 	void cambioModalidadPestana();
 
 };
