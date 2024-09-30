@@ -184,3 +184,28 @@ int Vista::cambioTipoPestanaANormal(){
     return opc;
 }
 
+int Vista::subMenuHistorial()
+{
+    int opc;
+    cout << "Historial" << endl << endl;
+    cout << "1. Buscar Sitio Web - Filtrar" << endl;
+    cout << "2. Mostrar Historial Completo" << endl;
+    cout << "3. Regresar" << endl;
+    cin >> opc;
+    //system("pause");
+    system("cls");
+    return opc;
+}
+
+string Vista::ventanaFiltro()
+{
+    string filtro;
+    cout << "Filtrar por Nombre / URL" << endl;
+    cout << "Ingrese la Palabra (Filtro)" << endl;
+    cin >> filtro;
+   // system("pause");
+   // system("cls");
+    return filtro;
+
+}
+

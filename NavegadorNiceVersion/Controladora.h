@@ -31,6 +31,7 @@ public:
 	void marcadores();
 	void nuevaPestana();
 	void Historial();
+	void filtrar();
 	void incognito();
 	void exportar();
 	void importar();

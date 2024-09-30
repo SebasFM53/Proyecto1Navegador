@@ -42,7 +42,7 @@ void Controladora::menuPrincipal()
 					system("cls");
 				}
 				else {
-					mostarHistorialPestActual();
+					Historial();
 					system("pause");
 					system("cls");
 				}
@@ -226,7 +226,32 @@ void Controladora::nuevaPestana()
 
 void Controladora::Historial()
 {
-	//FALTA
+	int opc;
+
+	do {
+		opc = Vista::subMenuHistorial();
+		switch (opc) {
+		case 1:
+			filtrar();
+			system("pause");
+			system("cls");
+			break;
+		case 2:
+			mostarHistorialPestActual();
+			system("pause");
+			system("cls");
+			break;
+		case 3:
+			break;
+		}
+
+	} while (opc != 3);
+}
+
+void Controladora::filtrar()
+{
+	string filtro = Vista::ventanaFiltro();
+     this->navegadorWeb->getPestana()->mostrarHistorialFiltrado(filtro);
 }
 
 void Controladora::incognito()

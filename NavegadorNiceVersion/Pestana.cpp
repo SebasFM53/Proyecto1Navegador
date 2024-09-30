@@ -225,3 +225,18 @@ SitioWeb* Pestana::getSitioActualPestActual(){
     else
         return nullptr;
 }
+
+void Pestana::mostrarHistorialFiltrado(std::string filtro)
+{
+    if (incognito == true) {
+        std::cout << "Pestanha incognita, no hay historial por mostrar\n";
+    }
+    else {
+        for (std::list<SitioWeb*>::iterator it = historial.begin(); it != historial.end(); ++it) {
+            if (((*it)->getTitulo().find(filtro) != std::string::npos)|| ((*it)->getURL().find(filtro) != std::string::npos)) {
+                std::cout << (*it)->toString();
+            }
+        }
+    }
+
+}

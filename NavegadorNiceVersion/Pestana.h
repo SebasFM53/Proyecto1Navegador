@@ -53,6 +53,7 @@ public:
 
 	SitioWeb* getSitioActualPestActual();
 
+	void mostrarHistorialFiltrado(std::string filtro);
 
 
 

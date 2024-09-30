@@ -32,7 +32,8 @@ public:
 
 	static int cambioTipoPestanaANormal();
 
-
+	static int subMenuHistorial();
+	static std::string ventanaFiltro();
 
 };
 
