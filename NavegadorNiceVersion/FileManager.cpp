@@ -70,7 +70,7 @@ void FileManager::guardarNavegador(const std::string& filename) {
 }
 
 void FileManager::cargarNavegador(const std::string& filename) {
-    nav->cargarArchivo("navegador.dat");
+    nav->cargarArchivo("sitios.dat");
 }
 
 void FileManager::guardarBookmarks(const std::string& filename) {

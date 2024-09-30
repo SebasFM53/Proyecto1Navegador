@@ -108,7 +108,6 @@ Navegador::~Navegador()
 {
 }
 
-
 void Navegador::guardarArchivo(std::ofstream& out) const {
     size_t size = pestanas.size();
     out.write(reinterpret_cast<const char*>(&size), sizeof(size));
@@ -130,8 +129,8 @@ void Navegador::cargarArchivo(const std::string& filename) {
 
         for (size_t i = 0; i < size; ++i) {
             Pestana* pestaña = new Pestana();
-            pestaña->cargarArchivo("navegador.dat");
-            pestanas.push_back(pestaña);
+            pestaña->cargarArchivo(in);
+            pestanas.push_front(pestaña);
         }
 
         in.close();

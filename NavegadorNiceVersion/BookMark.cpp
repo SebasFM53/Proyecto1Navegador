@@ -50,13 +50,14 @@ std::string BookMark::entireToString(){
     return s.str();
 }
 
+
 void BookMark::guardarArchivo(std::ofstream& out) const {
     size_t len = tag.size();
     out.write(reinterpret_cast<const char*>(&len), sizeof(len));
     out.write(tag.c_str(), len);
 
     if (pinned) {
-        pinned->guardarArchivo(out);
+        pinned->guardarArchivo("marcadores.dat", *pinned);
     }
     else {
         len = 0;
@@ -73,7 +74,7 @@ void BookMark::cargarArchivo(std::ifstream& in) {
 
     if (len > 0) {
         pinned = new SitioWeb();
-        pinned->cargarArchivo(in);
+        pinned->cargarArchivo("marcadores.dat", *pinned);
     }
     else {
         pinned = nullptr;

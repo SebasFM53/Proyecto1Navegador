@@ -82,9 +82,6 @@ void Pestana::insertarSitio(SitioWeb* sitio) {
 
 }
 
-
-
-
 void Pestana::regresarHistorial() {
     if (incognito) {
         std::cout << "Pestana incognita, no hay historial por mostrar\n";
@@ -140,7 +137,6 @@ void Pestana::eliminarMasReciente() {
     }
 }
 
-
 int Pestana::conteoSitios()
 {
     return historial.size();
@@ -172,19 +168,22 @@ void Pestana::mostrarTodoHistorial() {
     }
 }
 
-
 void Pestana::guardarArchivo(std::ofstream& out) const {
     size_t size = historial.size();
     out.write(reinterpret_cast<const char*>(&size), sizeof(size));
 
-    for (const SitioWeb* sitio : historial) {
-        sitio->guardarArchivo(out);
+    for (SitioWeb* sitio : historial) {
+        sitio->guardarArchivo("sitios.dat", *sitio);
     }
 }
 
-void Pestana::cargarArchivo(const std::string& filename) {
+void Pestana::cargarArchivo(std::ifstream& in) {
+    if (!in.is_open()) {
+        std::cerr << "Error al abrir el archivo." << std::endl;
+        return;
+    }
+
     size_t size;
-    std::ifstream in(filename, std::ios::binary);
     if (!in.read(reinterpret_cast<char*>(&size), sizeof(size))) {
         std::cerr << "Error al leer el tamaño del historial." << std::endl;
         return;
@@ -192,10 +191,11 @@ void Pestana::cargarArchivo(const std::string& filename) {
 
     historial.clear();
 
+    // Cargar sitios web del historial
     for (size_t i = 0; i < size; ++i) {
         SitioWeb* sitio = new SitioWeb();
-        sitio->cargarArchivo(in);
-        historial.push_back(sitio);
+        sitio->cargarArchivo("sitios.dat", *sitio);
+        historial.push_front(sitio);
     }
 }
 

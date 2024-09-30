@@ -239,13 +239,13 @@ void Controladora::incognito()
 
 void Controladora::exportar()
 {
-	fileMan->guardarNavegador("navegador.dat");
+	fileMan->guardarNavegador("sitios.dat");
 	fileMan->guardarBookmarks("marcadores.dat");
 }
 
 void Controladora::importar()
 {
-	fileMan->cargarNavegador("navegador.dat");
+	fileMan->cargarNavegador("sitios.dat");
 	fileMan->cargarBookmarks("marcadores.dat");
 }
 

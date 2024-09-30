@@ -34,8 +34,8 @@ public:
 
 	virtual ~SitioWeb();
 
-	void guardarArchivo(std::ofstream& out) const;
-	void cargarArchivo(std::ifstream& in);
+	void guardarArchivo(std::string filename, const SitioWeb& sitio);
+	void cargarArchivo(std::string filename, SitioWeb& sitio);
 
 };
 

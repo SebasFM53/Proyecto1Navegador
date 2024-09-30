@@ -46,8 +46,7 @@ public:
 	void mostrarTodoHistorial();
 
 	void guardarArchivo(std::ofstream& out) const;
-	void cargarArchivo(const std::string& filename);
-
+	void cargarArchivo(std::ifstream& in);
 
 	void cambiaAIncognito();
 	void cambiarANormal();
