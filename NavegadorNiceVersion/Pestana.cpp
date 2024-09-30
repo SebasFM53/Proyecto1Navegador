@@ -173,7 +173,7 @@ void Pestana::guardarArchivo(std::ofstream& out) const {
     out.write(reinterpret_cast<const char*>(&size), sizeof(size));
 
     for (SitioWeb* sitio : historial) {
-        sitio->guardarArchivo("sitios.dat", *sitio);
+        sitio->guardarArchivo("sitios.dat");
     }
 }
 
@@ -193,13 +193,12 @@ void Pestana::cargarArchivo(std::ifstream& in) {
 
     // Cargar sitios web del historial
     for (size_t i = 0; i < size; ++i) {
-       // SitioWeb* sitio = new SitioWeb();
+        // SitioWeb* sitio = new SitioWeb();
         SitioWeb sitio;
-        sitio.cargarArchivo("sitios.dat", sitio);
+        sitio.cargarArchivo(in);
         historial.push_front(&sitio);
     }
 }
-
 void Pestana::cambiaAIncognito(){
     setIncognito(true);
 }

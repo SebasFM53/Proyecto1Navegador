@@ -7,34 +7,34 @@
 #include "FileManager.h"
 int main() {
 
-	Controladora* control = new Controladora();
+	/*Controladora* control = new Controladora();
 	control->menuPrincipal();
 	system("pause");
-	system("cls");
+	system("cls");*/
 
 	
-	//Navegador* nav = new Navegador();
+	Navegador* nav = new Navegador();
 
-	//Pestana* pes = new Pestana();
-	//Pestana* pes2 = new Pestana();
+	Pestana* pes = new Pestana();
+	Pestana* pes2 = new Pestana();
 
-	//SitioWeb* site = new SitioWeb("URLA", "A", "a");
-	////SitioWeb* site2 = new SitioWeb("URLB", "B", "b");
-	//SitioWeb* site3 = new SitioWeb("URLC", "C", "c");
-	//SitioWeb* site4 = new SitioWeb("URLD", "D", "d");
-	//pes->insertarSitio(site);
-	//pes->insertarSitio(site2);
-	//pes2->insertarSitio(site3);
+	SitioWeb* site = new SitioWeb("URLA", "A", "a");
+	SitioWeb* site2 = new SitioWeb("URLB", "B", "b");
+	SitioWeb* site3 = new SitioWeb("URLC", "C", "c");
+	SitioWeb* site4 = new SitioWeb("URLD", "D", "d");
+	pes->insertarSitio(site);
+	pes->insertarSitio(site2);
+	pes2->insertarSitio(site3);
 
-	//std::cout << pes2->mostrarSitioActual();
+	std::cout << pes2->mostrarSitioActual();
 
-	//std::string filename = "sitios.dat";
-	//std::ofstream out(filename, std::ios::binary);
-	//std::ifstream in(filename, std::ios::binary);
-	/*site->guardarArchivo(filename, *site);
+	std::string filename = "sitios.dat";
+	std::ofstream out(filename, std::ios::binary);
+	std::ifstream in(filename, std::ios::binary);
+	site->guardarArchivo(filename);
 	SitioWeb siteNew;
-	siteNew.cargarArchivo(filename, siteNew);
-	std::cout << siteNew.toString();*/
+	siteNew.cargarArchivo(in);
+	std::cout << siteNew.toString();
 
 	//pes->mostrarTodoHistorial();
 	//pes->guardarArchivo(out);

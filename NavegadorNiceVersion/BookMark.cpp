@@ -57,7 +57,7 @@ void BookMark::guardarArchivo(std::ofstream& out) const {
     out.write(tag.c_str(), len);
 
     if (pinned) {
-        pinned->guardarArchivo("marcadores.dat", *pinned);
+        pinned->guardarArchivo("marcadores.dat");
     }
     else {
         len = 0;
@@ -74,7 +74,7 @@ void BookMark::cargarArchivo(std::ifstream& in) {
 
     if (len > 0) {
         pinned = new SitioWeb();
-        pinned->cargarArchivo("marcadores.dat", *pinned);
+        pinned->cargarArchivo(in);
     }
     else {
         pinned = nullptr;
