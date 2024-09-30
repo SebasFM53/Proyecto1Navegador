@@ -209,3 +209,12 @@ string Vista::ventanaFiltro()
 
 }
 
+void Vista::noSitioPestActual(){
+    std::cout << " No hay un sitio que agregar a BookMarks\n";
+}
+
+void Vista::incognitoBookMark(){
+    std::cout << "No se puede agregar a BookMark desde incognito\n";
+
+}
+

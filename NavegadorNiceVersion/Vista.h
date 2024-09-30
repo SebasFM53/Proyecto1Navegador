@@ -35,5 +35,8 @@ public:
 	static int subMenuHistorial();
 	static std::string ventanaFiltro();
 
+	static void noSitioPestActual();
+
+	static void incognitoBookMark();
 };
 

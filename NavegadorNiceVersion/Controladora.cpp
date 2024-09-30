@@ -53,16 +53,23 @@ void Controladora::menuPrincipal()
 			system("cls");
 			break;
 		case 4:
-			if (navegadorWeb->empty() == false) {
+			if (navegadorWeb->empty() == false ) {
 				if (navegadorWeb->getPestana()->conteoSitios() < 1) {
-					Vista::noHistorial();
+					Vista::noSitioPestActual();
 					system("pause");
 					system("cls");
 				}
 				else {
-					marcadores();
-					system("pause");
-					system("cls");
+					if (navegadorWeb->getPestana()->getIncognito()==true){
+						Vista::incognitoBookMark();
+						system("pause");
+						system("cls");
+					}
+					else {
+						marcadores();
+						system("pause");
+						system("cls");
+					}
 				}
 			}
 			else
@@ -184,6 +191,10 @@ void Controladora::busquedas()
 
 void Controladora::marcadores()
 {
+	if (navegadorWeb->getPestana()->conteoSitios()<1)
+	{
+
+	}
 	bool flag = false;
 	int opc;
 	string tagAux;
