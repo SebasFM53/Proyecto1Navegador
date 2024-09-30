@@ -128,9 +128,9 @@ void Navegador::cargarArchivo(const std::string& filename) {
         pestanas.clear();
 
         for (size_t i = 0; i < size; ++i) {
-            Pestana* pestaña = new Pestana();
-            pestaña->cargarArchivo(in);
-            pestanas.push_front(pestaña);
+            Pestana* pestana = new Pestana();
+            pestana->cargarArchivo(in);
+            pestanas.push_front(pestana);
         }
 
         in.close();

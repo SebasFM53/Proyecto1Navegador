@@ -193,9 +193,10 @@ void Pestana::cargarArchivo(std::ifstream& in) {
 
     // Cargar sitios web del historial
     for (size_t i = 0; i < size; ++i) {
-        SitioWeb* sitio = new SitioWeb();
-        sitio->cargarArchivo("sitios.dat", *sitio);
-        historial.push_front(sitio);
+       // SitioWeb* sitio = new SitioWeb();
+        SitioWeb sitio;
+        sitio.cargarArchivo("sitios.dat", sitio);
+        historial.push_front(&sitio);
     }
 }
 

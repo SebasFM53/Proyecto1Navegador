@@ -33,8 +33,6 @@ public:
 
 	virtual ~Navegador();
 
-	
-
 	void guardarArchivo(std::ofstream& out) const;
 	void cargarArchivo(const std::string& filename);
 

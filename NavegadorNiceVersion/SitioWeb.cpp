@@ -71,7 +71,6 @@ void SitioWeb::guardarArchivo(std::string filename, const SitioWeb& sitio) {
 void SitioWeb::cargarArchivo(std::string filename, SitioWeb& sitio) {
     std::ifstream out;
     out.open(filename, std::ios::binary);
-    size_t domainLength, urlLength, titleLength;
 
     if (!out.is_open()) {
         std::cout << "Error al abrir el archivo '" << filename << "'";

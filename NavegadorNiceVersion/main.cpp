@@ -17,7 +17,6 @@ int main() {
 	Pestana* pes = new Pestana();
 	Pestana* pes2 = new Pestana();
 
-
 	SitioWeb* site = new SitioWeb("URLA", "A", "a");
 	SitioWeb* site2 = new SitioWeb("URLB", "B", "b");
 	SitioWeb* site3 = new SitioWeb("URLC", "C", "c");
@@ -38,9 +37,9 @@ int main() {
 
 	//pes->mostrarTodoHistorial();
 	//pes->guardarArchivo(out);
-	//Pestana pesNew;
-	//pesNew.cargarArchivo(in);
-	//pesNew.mostrarTodoHistorial();
+	/*Pestana pesNew;
+	pesNew.cargarArchivo(in);
+	pesNew.mostrarTodoHistorial();*/
 	
 	/*
 	pes2->cambiaAIncognito();
